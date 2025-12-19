@@ -1,0 +1,18 @@
+<input type="text" [(ngModel)]="search" (input)="onSearch()">
+<div class="row">
+    <div *ngFor="let post of posts" class="col">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{post.title}}</h5>
+              <p class="card-text">{{post.title}}</p>
+              <div class="row" style = "margin-bottom: 5px;" >
+                  <div style = "margin-right: 5px;" *ngFor="let tag of post.tags">
+                    <a class="btn btn-outline-success">{{tag}}</a>
+                  </div>
+              </div>
+              <button (click)="openDetails(post.id)" class="btn btn-primary">Details</button>
+            </div>
+          </div>
+    </div>
+    
+  </div>

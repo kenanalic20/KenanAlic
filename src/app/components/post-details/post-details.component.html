@@ -1,0 +1,69 @@
+<div class="row">
+    <div *ngIf="post" class="col">
+        <h1>{{post.title}}</h1>
+        <p>{{post.body}}</p>
+        <div class="row" style="margin-bottom: 5px;">
+            <div style="margin-right: 5px;" *ngFor="let tag of post.tags">
+                <a class="btn btn-outline-success">{{tag}}</a>
+            </div>
+        </div>
+        <section class="gradient-custom" *ngIf="comments.length === 0">
+            <div class="container my-5 py-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10 col-xl-8">
+                        <div class="card">
+                            <div class="card-body p-4">
+                                <h4 class="text-center mb-4 pb-2">Comments not found</h4>
+                            </div>  
+
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </section>
+        <section *ngIf="comments.length>0" class="gradient-custom">
+            <div class="container my-5 py-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10 col-xl-8">
+                        <div class="card">
+                            <div class="card-body p-4">
+                                <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
+
+                                <div *ngFor="let comment of comments" class="row">
+                                    <div class="col">
+                                        <div class="d-flex flex-start">
+                                            <div class="flex-grow-1 flex-shrink-1">
+                                                <div>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h5 class="mb-1">
+                                                            {{comment.user.fullName}} <span>|
+                                                                {{comment.user.username}}</span>
+                                                            </h5>
+                                                    </div>
+
+                                                    <p class="small mb-0">
+                                                        {{comment.body}}
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            <div class="form-group">
+              <input placeholder="User id" [(ngModel)]="userId">
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Comment" [(ngModel)]="commentText"></textarea>
+              </div>
+            
+            <button (click)="submitComment()">Submit</button>
+    </div>
+</div>
